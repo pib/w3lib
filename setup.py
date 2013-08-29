@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='w3lib',
@@ -10,6 +10,7 @@ setup(
     url='https://github.com/scrapy/w3lib',
     packages=['w3lib'],
     platforms = ['Any'],
+    use_2to3=True,
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: BSD License',

@@ -25,9 +25,12 @@ def urljoin_rfc(base, ref, encoding='utf-8'):
     return urlparse.urljoin(unicode_to_str(base, encoding), \
         unicode_to_str(ref, encoding))
 
+_always_safe = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                'abcdefghijklmnopqrstuvwxyz'
+                '0123456789' '_.-')
 _reserved = ';/?:@&=+$|,#' # RFC 3986 (Generic Syntax)
 _unreserved_marks = "-_.!~*'()" # RFC 3986 sec 2.3
-_safe_chars = urllib.always_safe + '%' + _reserved + _unreserved_marks
+_safe_chars = _always_safe + '%' + _reserved + _unreserved_marks
 
 def safe_url_string(url, encoding='utf8'):
     """Convert the given url into a legal URL by escaping unsafe characters
